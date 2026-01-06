@@ -1,0 +1,131 @@
+/**
+ * PLUGIN STRUCTURE OVERVIEW
+ * Auto Gold Price Widget v2.1
+ * 
+ * This file provides a quick reference to the plugin's architecture
+ */
+
+/*
+┌─────────────────────────────────────────────────────────────────┐
+│                   AUTO GOLD PRICE WIDGET v2.1                   │
+│                     Professional File Structure                  │
+└─────────────────────────────────────────────────────────────────┘
+
+📂 gold-price-cal/
+│
+├── 🎯 auto-gold-price-widget.php          [MAIN ENTRY POINT]
+│   ├── Defines plugin constants
+│   ├── Loads all class files
+│   ├── Registers WordPress hooks
+│   └── Maintains backward compatibility
+│
+├── 📖 README.md                           [DOCUMENTATION]
+│   └── Complete plugin documentation
+│
+├── 📁 includes/                           [CORE LOGIC]
+│   └── class-agpw-core.php
+│       ├── AGPW_Core::fetch_and_store_prices()
+│       ├── AGPW_Core::get_exchange_rate()
+│       └── AGPW_Core::calculate_data()
+│
+├── 📁 admin/                              [ADMIN PANEL]
+│   └── class-agpw-admin.php
+│       ├── AGPW_Admin::register_settings()
+│       ├── AGPW_Admin::api_display_section_callback() ⭐ NEW
+│       ├── AGPW_Admin::add_admin_menu()
+│       └── AGPW_Admin::settings_page_html()
+│
+├── 📁 public/                             [FRONTEND]
+│   └── class-agpw-public.php
+│       ├── AGPW_Public::shortcode_handler()
+│       └── AGPW_Public::enqueue_assets()
+│
+└── 📁 assets/                             [STATIC FILES]
+    ├── css/
+    │   └── agpw-style.css                [ALL STYLES]
+    └── js/
+        └── agpw-script.js                [FRONTEND JS]
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│                        NEW FEATURES v2.1                         │
+└─────────────────────────────────────────────────────────────────┘
+
+⭐ API DATA DISPLAY SECTION (Admin Panel - Top Section)
+   ┌──────────────────────────────────────────────────────┐
+   │  📊 Current API Data                                 │
+   │  ┌─────────────┬─────────────┬──────────────┐       │
+   │  │ Gold Price  │ USD to LKR  │ Last Updated │       │
+   │  │ $2,650.00   │ 305.5000    │ 2026-01-06   │       │
+   │  └─────────────┴─────────────┴──────────────┘       │
+   │                                                       │
+   │  🌍 Change Plugin Currency:                          │
+   │  [Dropdown: LKR, USD, EUR, GBP, AUD, etc.]          │
+   │                                                       │
+   │  ℹ️ This affects the entire plugin's currency       │
+   └──────────────────────────────────────────────────────┘
+
+✨ BENEFITS:
+   • Clean separation of concerns
+   • Easy to maintain and extend
+   • Professional code organization
+   • Better performance
+   • Easier debugging
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│                         DATA FLOW                                │
+└─────────────────────────────────────────────────────────────────┘
+
+1. API FETCHING (Scheduled + Manual)
+   WordPress Cron → AGPW_Core::fetch_and_store_prices()
+                    ├── Fetch from GoldAPI.io
+                    ├── Fetch from ExchangeRate-API
+                    └── Store in wp_options
+
+2. ADMIN DISPLAY
+   Settings Page → AGPW_Admin::api_display_section_callback()
+                   ├── Read stored API data
+                   ├── Display gold price, exchange rate
+                   └── Show currency selector
+
+3. FRONTEND DISPLAY
+   [gold_price] → AGPW_Public::shortcode_handler()
+                  ├── Get currency (shortcode or default)
+                  ├── Calculate prices via AGPW_Core
+                  └── Render HTML output
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    CURRENCY MANAGEMENT                           │
+└─────────────────────────────────────────────────────────────────┘
+
+GLOBAL CURRENCY (Default for entire plugin):
+   Settings > API Data Display > Currency Selector
+   └── Updates: agpw_default_currency option
+
+SHORTCODE OVERRIDE (Per widget):
+   [gold_price currency="USD"]
+   └── Overrides default for this specific widget
+
+PRIORITY:
+   Shortcode currency > Default currency > LKR (fallback)
+
+
+┌─────────────────────────────────────────────────────────────────┐
+│                      USAGE EXAMPLES                              │
+└─────────────────────────────────────────────────────────────────┘
+
+// Table with default currency
+[gold_price type="table"]
+
+// Grid with USD
+[gold_price type="grid" currency="USD"]
+
+// Single karat with title
+[gold_price type="single" karat="24" title="24K Gold Price"]
+
+// Ticker with date
+[gold_price type="ticker" date="yes" date_pos="bottom"]
+
+*/

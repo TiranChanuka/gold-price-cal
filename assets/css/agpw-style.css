@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --agpw-gold: #facc15;
+    --agpw-gold-dark: #f59e0b;
+    --agpw-gold-light: #F9F1D8;
+    --agpw-bg: #FFFFFF;
+    --agpw-text: #333333;
+    --agpw-border: #E5E5E5;
+    --agpw-font: 'Inter', sans-serif;
+    --agpw-font-head: 'Inter', sans-serif;
+    --agpw-buy-color: #22C55E;
+    --agpw-sell-color: #EF4444;
+}
+
+.agpw-wrapper {
+    font-family: var(--agpw-font);
+    color: var(--agpw-text);
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.agpw-wrapper * {
+    box-sizing: border-box;
+}
+
+/* --- PRICE COLORS (Global) --- */
+.agpw-price-buy {
+    color: var(--agpw-buy-color) !important;
+}
+
+.agpw-price-sell {
+    color: var(--agpw-sell-color) !important;
+}
+
+/* --- THEMES --- */
+/* Dark Theme */
+.agpw-theme-dark {
+    --agpw-bg: #1a1a1a;
+    --agpw-text: #f0f0f0;
+    --agpw-border: #333;
+    --agpw-gold-light: #333;
+}
+
+.agpw-theme-dark .agpw-table th {
+    background: #000;
+}
+
+.agpw-theme-dark .agpw-card {
+    background: #222;
+    border-color: #444;
+}
+
+/* .agpw-card .agpw-card-header{
+    background-color: #222;
+    color: var(--agpw-gold);
+} */
+
+/* Luxury Theme */
+.agpw-theme-luxury {
+    --agpw-font-head: 'Playfair Display', serif;
+    --agpw-gold: #C5A059;
+}
+
+.agpw-theme-luxury .agpw-title,
+.agpw-theme-luxury .agpw-card-header {
+    font-family: var(--agpw-font-head);
+    letter-spacing: 1px;
+}
+
+.agpw-theme-luxury .agpw-table {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--agpw-gold);
+}
+
+/* Glass Theme */
+.agpw-theme-glass .agpw-table,
+.agpw-theme-glass .agpw-card,
+.agpw-theme-glass .agpw-single-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+.agpw-theme-glass.agpw-theme-dark .agpw-table {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+/* --- SINGLE CARD LAYOUT --- */
+.agpw-single-card {
+    background: var(--agpw-bg);
+    border: 1px solid var(--agpw-border);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.agpw-single-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--agpw-gold), #FFF, var(--agpw-gold));
+}
+
+.agpw-single-header {
+    margin-bottom: 20px;
+}
+
+.agpw-single-header .agpw-k-badge {
+    font-size: 1.5rem;
+    padding: 6px 16px;
+}
+
+.agpw-single-header .agpw-unit {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.agpw-single-body .agpw-price-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 1.1rem;
+}
+
+.agpw-single-body .label {
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.agpw-single-body .value {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.agpw-divider {
+    height: 1px;
+    background: var(--agpw-border);
+    margin: 10px 0;
+}
+
+/* --- STANDARD COMPONENTS --- */
+.agpw-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--agpw-gold);
+}
+
+.agpw-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--agpw-gold-dark);
+    text-transform: uppercase;
+}
+
+/* 
+.agpw-date {
+    font-size: 0.85rem;
+    color: #888;
+} */
+
+/* --- TABLE LAYOUT --- */
+.agpw-mode-table .agpw-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--agpw-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.agpw-mode-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.agpw-mode-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--agpw-border);
+    vertical-align: middle;
+}
+
+.agpw-mode-table tr:last-child td {
+    border-bottom: none;
+}
+
+.agpw-mode-table tr:hover {
+    background-color: var(--agpw-gold-light);
+}
+
+.agpw-k-badge {
+    background: linear-gradient(90deg, var(--agpw-gold), var(--agpw-gold-dark));
+    color: white;
+    padding: 1px 13px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.agpw-purity-grid {
+    font-size: 0.65rem;
+    font-weight: 600;
+    display: inline-block;
+    color: #888;
+}
+
+.agpw-theme-dark .agpw-purity-grid {
+    color: white;
+}
+
+.agpw-price-buy,
+.agpw-price-sell {
+    font-family: monospace;
+    font-weight: 600;
+}
+
+/* --- GRID LAYOUT --- */
+.agpw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.agpw-card {
+    background: var(--agpw-bg);
+    border: 1px solid var(--agpw-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.agpw-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--agpw-gold);
+}
+
+.agpw-card-header {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.agpw-card-body .agpw-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.agpw-card-body strong {}
+
+/* --- TICKER LAYOUT --- */
+.agpw-ticker-container {
+    width: 100%;
+    overflow: hidden;
+    background: #222;
+    color: var(--agpw-gold);
+    padding: 10px 0;
+    white-space: nowrap;
+    position: relative;
+    border-radius: 4px;
+}
+
+.agpw-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+    /* Slower speed */
+}
+
+.agpw-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 40px;
+    /* Increased spacing */
+    font-size: 1rem;
+    border-right: 1px solid #444;
+}
+
+.agpw-ticker-item .k-label {
+    font-weight: 700;
+    margin-right: 10px;
+    color: white;
+}
+
+.agpw-ticker-item .price {
+    margin-left: 10px;
+}
+
+.agpw-ticker-container:hover .agpw-ticker-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* Move only 50% for seamless loop */
+}
+
+@media (max-width: 600px) {
+
+    .agpw-mode-table td,
+    .agpw-mode-table th {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- RESPONSIVE GRID OVERRIDES --- */
+
+/* Tablet View (typically 768px - 1024px): Show 4 cards per row */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .agpw-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Mobile View: Show 2 cards per row */
+@media (max-width: 600px) {
+    .agpw-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .agpw-card {
+        padding: 12px;
+    }
+
+    .agpw-card-header {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+
+    .agpw-card-body .agpw-row {
+        font-size: 0.8rem;
+    }
+}
+
+/* --- CLOCK COMPONENT --- */
+.agpw-clock-container {
+    text-align: center;
+    padding: 24px 0 10px 0;
+    font-family: var(--agpw-font);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clear: both;
+}
+
+.agpw-clock-container.agpw-pos-top {
+    margin-bottom: 15px;
+    padding-top: 5px;
+}
+
+/* .agpw-clock-container.agpw-pos-bottom {
+    margin-top: 15px;
+} */
+
+.agpw-time {
+    font-size: 0.7rem;
+    font-weight: 400;
+    /* Regular, not too bold */
+    color: #000000;
+    /* Default text color */
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 1px;
+}
+
+.agpw-date {
+    font-size: 0.8rem;
+    color: #000000;
+    margin-top: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Dark Theme Adjustments */
+/* .agpw-theme-dark .agpw-time {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.agpw-theme-dark .agpw-date {
+    color: rgba(255, 255, 255, 0.6);
+} */
+
+/* Main Title Styling */
+.agpw-main-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--agpw-gold-dark);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.agpw-theme-dark .agpw-main-title {
+    color: var(--agpw-gold);
+}
