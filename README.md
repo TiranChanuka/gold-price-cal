@@ -109,6 +109,9 @@ Located at the **top** of the admin settings page, this section shows:
 
 // With custom title and date
 [gold_price type="table" title="Today's Gold Prices" date="yes"]
+
+// With custom theme and karats
+[gold_price type="grid" karat="24,22,21,18" theme="dark"]
 ```
 
 ## 🔄 Migration Notes
